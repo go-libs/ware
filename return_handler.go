@@ -1,7 +1,7 @@
 package ware
 
 import (
-  "reflect"
+	"reflect"
 )
 
 // ReturnHandler is a service that Martini provides that is called
@@ -11,7 +11,7 @@ import (
 type ReturnHandler func(Context, []reflect.Value)
 
 func defaultReturnHandler() ReturnHandler {
-  return func(ctx Context, vals []reflect.Value) {
-    // TODO
-  }
+	return func(ctx Context, vals []reflect.Value) {
+		// TODO
+	}
 }
