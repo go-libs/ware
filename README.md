@@ -87,7 +87,6 @@ b := NewBuilder()
 b.Use(func (log *log.Logger) {
   log.Println("build...")
 })
-
 b.Run()
 
 // Compose other Ware
