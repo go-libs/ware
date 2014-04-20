@@ -1,4 +1,4 @@
-# Ware
+# Ware [![GoDoc](https://godoc.org/github.com/futurespaceio/ware?status.png)](https://godoc.org/github.com/futurespaceio/ware)
 
 Easily create middleware layer in Golang.   
 Forked from [martini][].   
