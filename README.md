@@ -1,7 +1,7 @@
 # Ware
 
 Easily create middleware layer in Golang.   
-Forked from [martini][].
+Forked from [martini][].   
 Dependence the [inject][] package.
 
 
