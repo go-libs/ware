@@ -5,7 +5,7 @@ Forked from [martini][].
 Dependence the [inject][] package.
 
 
-### Getting Started
+## Getting Started
 
 ```go
 // ware.go
@@ -100,7 +100,24 @@ b.Run()
 ```
 
 
-### License
+## API
+
+### New() 
+
+### Ware.Handlers(handlers ...Handler)
+
+### Ware.Action(Handler)
+
+### Ware.Use(Handler)
+
+### Ware.Run(Handler)
+
+### Others
+
+  See [inject][].
+
+
+## License
 
 MIT
 
