@@ -70,11 +70,11 @@ func (w *Ware) Use(handler Handler) {
 
 // Run the ware.
 func (w *Ware) Run() {
-  w.createContext().run()
+  w.CreateContext().Run()
 }
 
 // Creates a context.
-func (w *Ware) createContext() *context {
+func (w *Ware) CreateContext() *context {
   c := &context{inject.New(), w.handlers, w.action, nil, 0}
   c.SetParent(w)
   c.MapTo(c, (*Context)(nil))
@@ -129,7 +129,7 @@ func (c *context) handler() Handler {
 
 func (c *context) Next() {
   c.index += 1
-  c.run()
+  c.Run()
 }
 
 func (c *context) Written() bool {
@@ -145,7 +145,7 @@ func (c *context) Written() bool {
   return false
 }
 
-func (c *context) run() {
+func (c *context) Run() {
   for c.index <= len(c.handlers) {
     _, err := c.Invoke(c.handler())
     if err != nil {
