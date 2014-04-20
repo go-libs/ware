@@ -112,6 +112,7 @@ type context struct {
   index    int
 }
 
+// Changes the response instance.
 func (c *context) Out(o interface{}) {
   c.out = o
 }
