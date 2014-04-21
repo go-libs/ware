@@ -2,7 +2,7 @@
 
 Easily create middleware layer in Golang.   
 Forked from [martini][].   
-Dependence the [inject][] package.
+Dependence [inject][] package.
 
 
 ## Getting Started
@@ -47,55 +47,88 @@ Compose Wares:
 package main
 
 import (
-    "log"
+        "log"
 
-    "github.com/codegangsta/inject"
-    . "github.com/futurespaceio/ware"
+        "github.com/codegangsta/inject"
+        . "github.com/futurespaceio/ware"
 )
 
 type Builder struct {
-    inject.Injector
-    *Ware
+        inject.Injector
+        *Ware
 }
 
 func NewBuilder() *Builder {
-    w := New()
-    b := &Builder{inject.New(), w}
-    b.Map(w)
-    return b
+        w := New()
+        b := &Builder{inject.New(), w}
+        b.Map(w)
+        return b
 }
 
 type Packer struct {
-    inject.Injector
-    *Ware
+        inject.Injector
+        *Ware
 }
 
 func (p *Packer) Handle() {
-    p.Run()
+        p.Run()
 }
 
 func NewPacker() *Packer {
-    w := New()
-    p := &Packer{inject.New(), w}
-    p.Map(w)
-    return p
+        w := New()
+        p := &Packer{inject.New(), w}
+        p.Map(w)
+        return p
 }
 ```
 
 ```go
 b := NewBuilder()
 b.Use(func (log *log.Logger) {
-    log.Println("build...")
+        log.Println("build...")
 })
 b.Run()
 
 // Compose other Ware
 p := NewPacker()
 p.Use(func (log *log.Logger) {
-    log.Println("pack...")
+        log.Println("pack...")
 })
 b.Action(p.Handle)
 b.Run()
+```
+
+Mapping values to interface
+
+```go
+type Deploy interface {
+        Do()
+}
+type deploy struct{}
+func (d *deploy) Do() {}
+func NewDeploy() Deploy {
+        return &deploy{}
+        }
+        type Compress struct {
+        inject.Injector
+        *Ware
+        d Deploy
+}
+func NewCompress() *Compress {
+        w := New()
+        d := NewDeploy()
+        w.MapTo(d, (*Deploy)(nil))
+        c := &Compress{inject.New(), w, d}
+        c.Map(w)
+        return c
+}
+
+
+c := NewCompress()
+c.Use(func(d Deploy) {
+        fmt.Println(d)
+})
+c.Run()
 ```
 
 
