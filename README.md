@@ -12,20 +12,20 @@ Dependence the [inject][] package.
 package main
 
 import (
-  "log"
-  "github.com/futurespaceio/ware"
+    "log"
+    "github.com/futurespaceio/ware"
 )
 
 func main() {
-  w := ware.New()
+    w := ware.New()
 
-  w.Use(func(c ware.Context, log *log.Logger) {
-    log.Println("before")
-    c.Next()
-    log.Println("after")
-  })
+    w.Use(func(c ware.Context, log *log.Logger) {
+        log.Println("before")
+        c.Next()
+        log.Println("after")
+    })
 
-  w.Run()
+    w.Run()
 }
 ```
 
@@ -47,52 +47,52 @@ Compose Wares:
 package main
 
 import (
-  "log"
+    "log"
 
-  "github.com/codegangsta/inject"
-  . "github.com/futurespaceio/ware"
+    "github.com/codegangsta/inject"
+    . "github.com/futurespaceio/ware"
 )
 
 type Builder struct {
-  inject.Injector
-  *Ware
+    inject.Injector
+    *Ware
 }
 
 func NewBuilder() *Builder {
-  w := New()
-  b := &Builder{inject.New(), w}
-  b.Map(w)
-  return b
+    w := New()
+    b := &Builder{inject.New(), w}
+    b.Map(w)
+    return b
 }
 
 type Packer struct {
-  inject.Injector
-  *Ware
+    inject.Injector
+    *Ware
 }
 
 func (p *Packer) Handle() {
-  p.Run()
+    p.Run()
 }
 
 func NewPacker() *Packer {
-  w := New()
-  p := &Packer{inject.New(), w}
-  p.Map(w)
-  return p
+    w := New()
+    p := &Packer{inject.New(), w}
+    p.Map(w)
+    return p
 }
 ```
 
 ```go
 b := NewBuilder()
 b.Use(func (log *log.Logger) {
-  log.Println("build...")
+    log.Println("build...")
 })
 b.Run()
 
 // Compose other Ware
 p := NewPacker()
 p.Use(func (log *log.Logger) {
-  log.Println("pack...")
+    log.Println("pack...")
 })
 b.Action(p.Handle)
 b.Run()
