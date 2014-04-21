@@ -108,8 +108,8 @@ type deploy struct{}
 func (d *deploy) Do() {}
 func NewDeploy() Deploy {
         return &deploy{}
-        }
-        type Compress struct {
+}
+type Compress struct {
         inject.Injector
         *Ware
         d Deploy
