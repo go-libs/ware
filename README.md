@@ -12,20 +12,20 @@ Dependence [inject][] package.
 package main
 
 import (
-    "log"
-    "github.com/futurespaceio/ware"
+        "log"
+        "github.com/futurespaceio/ware"
 )
 
 func main() {
-    w := ware.New()
+        w := ware.New()
 
-    w.Use(func(c ware.Context, log *log.Logger) {
-        log.Println("before")
-        c.Next()
-        log.Println("after")
-    })
+        w.Use(func(c ware.Context, log *log.Logger) {
+            log.Println("before")
+            c.Next()
+            log.Println("after")
+        })
 
-    w.Run()
+        w.Run()
 }
 ```
 
