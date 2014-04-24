@@ -131,18 +131,45 @@ c.Use(func(d Deploy) {
 c.Run()
 ```
 
+Sets the output prefix for the logger. (defaults to `[ware]`)
+
+```go
+w.Use(func(log *log.Logger) {
+        log.SetPrefix("[martini]")
+})
+```
+
 
 ## API
 
-### New() 
+#### New() 
+> Creates a Ware instance.
 
-### Ware.Handlers(handlers ...Handler)
+#### Ware.Handlers(handlers ...Handler)
+> Sets middlewares.
 
-### Ware.Action(Handler)
+#### Ware.Action(Handler)
+> Sets the handler that will be called after all the middleware has been invoked.
 
-### Ware.Use(Handler)
+#### Ware.Use(Handler)
+> Adds a middleware.
 
-### Ware.Run(Handler)
+#### Ware.Run()
+> Invokes the ware app.
+
+#### Ware.CreateContext()
+> Creates a new context.
+
+#### Context.Out(o interface{})
+> Sets response instance.
+
+#### Context.Next()
+
+#### Context.Written()
+> Stops to invoke next middleware handler, the response instance responded.
+
+#### Context.Run()
+> Invokes the context.
 
 ### Others
 

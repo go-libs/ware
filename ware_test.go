@@ -1,6 +1,7 @@
 package ware
 
 import (
+	"log"
 	"reflect"
 	"testing"
 )
@@ -71,4 +72,19 @@ func Test_Ware_Handlers(t *testing.T) {
 	w.Run()
 
 	expect(t, result, "batman!batman!batman!bat")
+}
+
+func Test_Ware_Logger_SetPrefix(t *testing.T) {
+	prefix := ""
+
+	w := New()
+	w.Use(func(log *log.Logger) {
+		log.SetPrefix("[martini]")
+	})
+	w.Use(func(log *log.Logger) {
+		prefix = log.Prefix()
+	})
+	w.Run()
+
+	expect(t, prefix, "[martini]")
 }
