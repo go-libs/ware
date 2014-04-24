@@ -131,7 +131,7 @@ c.Use(func(d Deploy) {
 c.Run()
 ```
 
-Sets the output prefix for the logger. (defaults to `[ware]`)
+Sets the output prefix for the logger. (Default `[ware]`)
 
 ```go
 w.Use(func(log *log.Logger) {
