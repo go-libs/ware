@@ -158,7 +158,7 @@ w.Use(func(log *log.Logger) {
 > Invokes the ware app.
 
 #### Ware.CreateContext()
-> Creates a new context.
+> Creates a new context.   
 > NOTE: In martini, this api is private, but sometime we need to hack the context!
 
 #### Context.Out(o interface{})
