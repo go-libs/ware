@@ -1,12 +1,12 @@
 // Package ware is a powerful package for easily create middleware layer in Golang.
 //
-// For a full guide visit https://github.com/futurespaceio/ware
+// For a full guide visit https://github.com/futurespace/ware
 //
 // package main
 //
 // import (
 //   "log"
-//   "github.com/futurespaceio/ware"
+//   "github.com/futurespace/ware"
 // )
 //
 // func main() {

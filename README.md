@@ -1,4 +1,4 @@
-# Ware [![wercker status](https://app.wercker.com/status/1569ebfba816e02d463a2b55b2000744/s/ "wercker status")](https://app.wercker.com/project/bykey/1569ebfba816e02d463a2b55b2000744) [![GoDoc](https://godoc.org/github.com/futurespaceio/ware?status.png)](https://godoc.org/github.com/futurespaceio/ware)
+# Ware [![wercker status](https://app.wercker.com/status/1569ebfba816e02d463a2b55b2000744/s/ "wercker status")](https://app.wercker.com/project/bykey/1569ebfba816e02d463a2b55b2000744) [![GoDoc](https://godoc.org/github.com/futurespace/ware?status.png)](https://godoc.org/github.com/futurespace/ware)
 
 Easily create middleware layer in Golang.   
 **Forked from [martini][]**.   
@@ -13,7 +13,7 @@ package main
 
 import (
         "log"
-        "github.com/futurespaceio/ware"
+        "github.com/futurespace/ware"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 Install the Ware package:
 
 ```
-go get github.com/futurespaceio/ware
+go get github.com/futurespace/ware
 ```
 
 Run test:
@@ -50,7 +50,7 @@ import (
         "log"
 
         "github.com/codegangsta/inject"
-        . "github.com/futurespaceio/ware"
+        . "github.com/futurespace/ware"
 )
 
 type Builder struct {
