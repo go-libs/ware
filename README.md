@@ -183,4 +183,4 @@ MIT
 
 
 [martini]: https://github.com/go-martini/martini
-[inject]: github.com/codegangsta/inject
+[inject]: https://github.com/codegangsta/inject
